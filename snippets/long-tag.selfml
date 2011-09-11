@@ -1,0 +1,8 @@
+(name [Long Tag])
+
+(trigger
+    (tab <))
+
+(only-in text.xml)
+
+(snippet [<%{1="name"}>%{0}</%{1/([^ ]+).*/$1/}>])

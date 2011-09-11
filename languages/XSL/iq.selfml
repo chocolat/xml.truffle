@@ -1,0 +1,36 @@
+(detector
+    (extension xsl)
+    (extension xslt))
+
+(folding
+    (start [^\s*(<[^!?%/](?!.+?(/>|</.+?>))|<[!%]--(?!.+?--%?>)|<%[!]?(?!.+?%>))])
+    (stop [^\s*(</[^>]+>|[/%]>|-->)\s*$]))
+
+(in text.xml
+    (shell-variables
+        (TM_COMMENT_START [<!-- ])
+        (TM_COMMENT_END [ -->]))
+    (comment.block [<!-- ] [ -->]))
+
+(in text.xml
+    (pair [{]
+        [}]
+        (highlight))
+    (pair `[`
+        `]`
+        (highlight))
+    (pair [(]
+        [)]
+        (highlight))
+    (pair "
+        "
+        (highlight))
+    (pair <
+        >
+        (highlight))
+    (indentation.decrease [^\s*(</[^>]+>|-->|--%>)])
+    (indentation.increase [^\s*<(([^!/?]|%)(?!.+?([/%]>|</.+?>))|[%!]--\s*$)]))
+
+(in [text.xml.xsl meta.tag.xml.template]
+    (symbol-list
+        (transformation [s/^\s*<xsl:template\s+(.*)\s*>/$1/])))

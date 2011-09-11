@@ -1,0 +1,8 @@
+(name [Short Tag])
+
+(trigger
+    (tab >))
+
+(only-in text.xml)
+
+(snippet [<%{1="name"} />])

@@ -1,0 +1,14 @@
+(trigger
+    (key [[ctrl][shift]V]))
+
+(name [Validate Syntax])
+
+(only-in text.xml)
+
+(input document)
+
+(output html)
+
+(save nothing)
+
+(script [xmllint --htmlout --valid - 2>&1|perl -pe 's|^((?:</?[^>]+>)*)(.*?):(\d+):(.*error.*)|$1<a href="txmt://open?line=$3">$4</a>|'])

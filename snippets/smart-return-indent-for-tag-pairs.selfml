@@ -1,0 +1,10 @@
+(name [Special: Return Inside Empty Open/Close Tags])
+
+(trigger
+    (key [[enter]]))
+
+(only-in meta.scope.between-tag-pair.xml)
+
+(snippet [
+	%{0}
+])

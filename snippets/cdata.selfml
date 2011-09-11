@@ -1,0 +1,8 @@
+(name CDATA)
+
+(trigger
+    (tab cdata))
+
+(only-in text.xml)
+
+(snippet [<![CDATA[%{0}]]>])

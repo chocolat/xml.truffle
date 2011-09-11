@@ -1,0 +1,45 @@
+(root text.xml.xsl
+    (zone meta.tag.xml.template
+        (start
+            (regex [(<)(xsl)((:))(template)]
+                (3 entity.name.tag.xml)
+                (4 punctuation.separator.namespace.xml)
+                (5 entity.name.tag.localname.xml)
+                (1 punctuation.definition.tag.xml)
+                (2 entity.name.tag.namespace.xml)))
+        (end
+            (regex [(>)]
+                (3 entity.name.tag.xml)
+                (4 punctuation.separator.namespace.xml)
+                (5 entity.name.tag.localname.xml)
+                (1 punctuation.definition.tag.xml)
+                (2 entity.name.tag.namespace.xml)))
+        (subzones
+            (zone
+                (match
+                    (regex [ (?:([-_a-zA-Z0-9]+)((:)))?([a-zA-Z-]+)]
+                        (3 punctuation.separator.namespace.xml)
+                        (4 entity.other.attribute-name.localname.xml)
+                        (1 entity.other.attribute-name.namespace.xml)
+                        (2 entity.other.attribute-name.xml))))
+            (include @doublequotedString)
+            (include @singlequotedString)))
+    (include text.xml))
+
+(collection singlequotedString
+    (zone string.quoted.single.xml
+        (start
+            (regex '
+                (0 punctuation.definition.string.begin.xml)))
+        (end
+            (regex '
+                (0 punctuation.definition.string.end.xml)))))
+
+(collection doublequotedString
+    (zone string.quoted.double.xml
+        (start
+            (regex "
+                (0 punctuation.definition.string.begin.xml)))
+        (end
+            (regex "
+                (0 punctuation.definition.string.end.xml)))))
