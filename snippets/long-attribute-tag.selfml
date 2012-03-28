@@ -5,5 +5,5 @@
 
 (only-in text.xml)
 
-(snippet [<%{1="name"} %{2="attr="value""}>%{0}
+(snippet [<%{1="name"} %{2="attr=\"value\""}>%{0}
 </%{1="name"}>])
